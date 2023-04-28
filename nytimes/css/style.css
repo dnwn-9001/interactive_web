@@ -1,0 +1,23 @@
+body {
+  margin: auto;
+  overflow: hidden;
+}
+
+.content__wrap {
+  width: 70vw;
+  height: 100vh;
+  margin: 0 auto;
+  position: relative;
+}
+
+.content__wrap div {
+  position: absolute;
+}
+
+.content__wrap img {
+  width: 60%;
+}
+
+.content__wrap video {
+  width: 60%;
+}
