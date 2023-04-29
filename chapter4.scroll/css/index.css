@@ -1,0 +1,98 @@
+body {
+  background: linear-gradient(
+    150deg,
+    skyblue,
+    rgb(56, 225, 231),
+    rgb(56, 124, 187),
+    #04266d,
+    #040e49,
+    #02141d
+  );
+  overflow-x: hidden;
+  /* css 초기화 */
+  padding: 0;
+  margin: 0;
+}
+
+.depthWrap {
+  position: fixed;
+  bottom: 10%;
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  width: 100%;
+  border-bottom: 2px dashed #fff;
+  padding-bottom: 20px;
+}
+
+.depthWrap span {
+  width: 100px;
+  display: inline-block;
+  text-align: right;
+}
+
+.innerWrap {
+  position: relative;
+  width: 100%;
+  z-index: 100;
+  /* height: 10000px; */
+}
+
+.title {
+  text-align: center;
+  width: 100%;
+  font-size: 50px;
+  margin-top: 70px;
+  color: white;
+}
+
+.progressWrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background-color: #9fecc8;
+}
+
+.bar {
+  width: 0;
+  height: inherit;
+  position: absolute;
+  z-index: 100;
+  background-color: wheat;
+  transition: width 0.2s ease-out;
+}
+
+.textWrap {
+  padding: 500px 20px;
+}
+
+.textWrap p {
+  color: aliceblue;
+  font-size: 30px;
+  text-align: center;
+}
+
+.textWrap img {
+  width: 100%;
+}
+
+.submarine {
+  width: 200px;
+  z-index: 200;
+  position: fixed;
+  top: 20%;
+  transition: all 0.3s ease-out;
+}
+
+.octopus {
+  position: fixed;
+  bottom: -200px;
+  right: 0;
+  width: 300px;
+  opacity: 0.4;
+  z-index: 1;
+  transition: all 0.4s ease-out;
+}
