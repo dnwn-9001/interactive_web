@@ -1,21 +1,32 @@
-// 스크롤시 헤더를 넘어가면 블로그 헤더 바탕색이 하얀색으로
-// + 프로그레스바 생겨서 진행현황 보여줌.
 const dimd = document.querySelector(".dimd");
 const header = document.querySelector("header");
-const progressBar = document.querySelector(".progressWrap");
+const progressWrap = document.querySelector(".progressWrap");
+const bar = document.querySelector(".bar");
 const headerWrap = document.querySelector(".headerWrap");
 const blog = document.querySelector(".headerWrap h1");
 
+let scrollNum = 0;
+let totalHeight = 0;
+const dimdHeight = dimd.scrollHeight;
+
 window.addEventListener("scroll", () => {
-  if (window.scrollY >= dimd.scrollHeight) {
+  scrollNum = window.scrollY - dimdHeight;
+  totalHeight = document.body.scrollHeight - dimdHeight;
+
+  if (window.scrollY >= dimdHeight) {
     header.style.top = window.scrollY + "px";
     blog.style.color = "black";
-    progressBar.style.display = "block";
-    headerWrap.style.backgroundColor = "rgba(250,250,250, 0.5)";
+    progressWrap.style.display = "block";
+    headerWrap.style.backgroundColor = "rgba(250,250,250, 0.6)";
+    bar.style.width = percent(scrollNum, totalHeight) + "%";
   } else {
     header.style.top = "0";
     blog.style.color = "white";
-    progressBar.style.display = "none";
+    progressWrap.style.display = "none";
     headerWrap.style.backgroundColor = "transparent";
   }
 });
+
+const percent = (scrollNum, totalHeight) => {
+  return ((scrollNum / totalHeight) * 100).toFixed(0);
+};
