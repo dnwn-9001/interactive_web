@@ -42,6 +42,7 @@ section.mainPage .imageWrap .parallaxImage {
   background-size: cover;
   background-repeat: no-repeat;
   perspective: 400px;
+  transition: all 0.3s;
 }
 
 section.mainPage .imageWrap .parallaxImage:nth-child(1) {

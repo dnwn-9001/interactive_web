@@ -1,12 +1,16 @@
-const imageAll = document.querySelectorAll(".parallaxImage");
+const imageAll = document.querySelectorAll(".imageWrap .parallaxImage");
 
 let scrollNum = 0;
-let totalHeight = 0;
+const totalNum = imageAll.length;
 
 window.addEventListener("scroll", () => {
   scrollNum = window.scrollY;
 
-  imageAll.forEach((item, index) => {
-    item.style.transform = `scale(1.1)`;
-  });
+  if (scrollNum < 1500) {
+    imageAll.forEach((item, index) => {
+      item.style.transform = `perspective(400px) translate3d(0,0,${
+        scrollNum / (2 * (totalNum - index))
+      }px)`;
+    });
+  }
 });
