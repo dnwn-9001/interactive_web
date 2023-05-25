@@ -1,29 +1,32 @@
-const dimd = document.querySelector(".dimd");
 const header = document.querySelector("header");
-const progressWrap = document.querySelector(".progressWrap");
 const bar = document.querySelector(".bar");
-const headerWrap = document.querySelector(".headerWrap");
-const blog = document.querySelector(".headerWrap h1");
+const coverTitle = document.querySelector(".coverTitle");
+const coverWrap = document.querySelector(".coverWrap");
+const dimd = coverWrap.querySelector(".dimd");
 
+let windowScroll = 0;
 let scrollNum = 0;
 let totalHeight = 0;
-const dimdHeight = dimd.scrollHeight;
+let dimdHeight = 0;
 
 window.addEventListener("scroll", () => {
-  scrollNum = window.scrollY - dimdHeight;
+  dimdHeight = dimd.scrollHeight;
+  windowScroll = window.scrollY;
+  scrollNum = windowScroll - dimdHeight;
   totalHeight = document.body.scrollHeight - dimdHeight;
 
-  if (window.scrollY >= dimdHeight) {
-    header.style.top = window.scrollY + "px";
-    blog.style.color = "black";
-    progressWrap.style.display = "block";
-    headerWrap.style.backgroundColor = "rgba(250,250,250, 0.6)";
+  console.log("height", window.innerHeight);
+  console.log(percent(scrollNum, totalHeight));
+
+  if (windowScroll >= dimdHeight) {
+    header.classList.add("fixed");
+    header.style.top = windowScroll + "px";
     bar.style.width = percent(scrollNum, totalHeight) + "%";
   } else {
-    header.style.top = "0";
-    blog.style.color = "white";
-    progressWrap.style.display = "none";
-    headerWrap.style.backgroundColor = "transparent";
+    header.classList.remove("fixed");
+    coverTitle.style.top = -windowScroll / 10 + "px";
+    coverWrap.style.backgroundPosition = `center ${-windowScroll / 5}px`;
+    dimd.style.backgroundColor = `rgba(0,0,0, ${0.4 + windowScroll / 1000})`;
   }
 });
 
